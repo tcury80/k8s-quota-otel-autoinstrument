@@ -101,12 +101,17 @@ operator:
 *replace *** with your o11y INGEST token*
 [Operator API docs](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md)
 
-2. Delete the current tomcat pod and wait for the creation of a new one
+2. Put back the resource quota into the tomcat namespace
+```
+kubectl create -f resourcequota.yaml -n tomcat
+```
+
+3. Delete the current tomcat pod and wait for the creation of a new one
 ```
 kubectl delete pod tomcat-6c6588c664-ph59k -n tomcat
 ```
 
-3. Check the init-container of the pod recently created (now, init-container contains resource limits and requests)
+4. Check the init-container of the pod recently created (now, init-container contains resource limits and requests)
 ```
 Init Containers:
   opentelemetry-auto-instrumentation-java:

@@ -1,0 +1,14 @@
+operator:
+  enabled: true
+  instrumentation:
+    spec:
+      java:
+        repository: ghcr.io/signalfx/splunk-otel-java/splunk-otel-java
+        tag: v1.32.2
+        resources:
+          limits:
+            cpu: 500m
+            memory: 500Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
